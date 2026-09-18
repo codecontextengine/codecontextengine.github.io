@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alligator — Code Context Engine for AI Coding Agents</title>
-  <meta name="description" content="Alligator is a self-hosted code context engine for AI coding agents. Hybrid search, dependency graphs, and commit history so agents answer what, where, and why. Coming soon as open source." />
+  <title>Alligator | Context for Coding and Code Review Agents</title>
+  <meta name="description" content="Persistent code, dependency, and Git context for coding and code review agents. Self-hosted, MCP-native, and built alongside Codex. Public CLI coming to PyPI." />
   <meta name="theme-color" content="#020408" />
   <link rel="canonical" href="https://alligator.sh/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://alligator.sh/" />
-  <meta property="og:title" content="Alligator — Code Context Engine for AI Coding Agents" />
-  <meta property="og:description" content="Self-hosted context for Cursor, Claude, and other coding agents. Semantic search + graphs + commit intelligence. Open source. Coming soon." />
+  <meta property="og:title" content="Alligator | Context for Coding and Code Review Agents" />
+  <meta property="og:description" content="Give Codex and other clients the what, where, and why of your codebase. Hybrid search, dependency graphs, and Git intelligence through MCP. CLI coming to PyPI." />
   <meta property="og:site_name" content="Alligator" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Alligator — Code Context Engine for AI Coding Agents" />
-  <meta name="twitter:description" content="Self-hosted context for coding agents. What, where, and why — via MCP. Open source. Coming soon." />
+  <meta name="twitter:title" content="Alligator | Context for Coding and Code Review Agents" />
+  <meta name="twitter:description" content="Persistent context for coding and code review agents. Hybrid search, graphs, and Git history through MCP. Self-hosted CLI coming to PyPI." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -352,6 +352,7 @@
       font-weight: 900;
       color: #fff;
     }
+    .stat-number { font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-variant-numeric: lining-nums tabular-nums; letter-spacing: .02em; }
     .stat-val .unit { font-size: .9rem; color: var(--cyan); }
     .stat-label {
       font-family: 'Share Tech Mono', monospace;
@@ -772,6 +773,31 @@
         animation: none;
       }
     }
+
+    /* Launch refresh: preserve the original identity with clearer attribution. */
+    :root { --muted: #7897a7; }
+    .eyebrow { letter-spacing: .13em; max-width: 850px; line-height: 1.9; }
+    .codex-credit { display: inline-flex; flex-wrap: wrap; gap: .7rem; align-items: center; margin-top: 1.5rem; color: #b8cbd5; font-size: .9rem; text-decoration: none; }
+    .codex-credit:hover { color: #fff; }
+    .codex-brand { color: #fff; font: 600 1.05rem 'Rajdhani',sans-serif; padding-right: .8rem; border-right: 1px solid #365160; }
+    .codex-credit img { width: 26px; height: 26px; object-fit: contain; }
+    .workflow-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-top: 2.5rem; }
+    .workflow-grid article { background: var(--surface); padding: 1.8rem; border: 1px solid var(--border); }
+    .workflow-label { font: .7rem 'Share Tech Mono',monospace; letter-spacing: .15em; text-transform: uppercase; color: var(--cyan); }
+    .workflow-grid h3 { color: #fff; font-size: 1.25rem; line-height: 1.4; margin: 1rem 0; }
+    .data-note { max-width: 850px; margin-top: 2rem; color: var(--muted); font-size: .95rem; }
+    .readiness-note { margin-top: 2rem; }
+    .readiness-details { font-size: .9rem; margin-top: .65rem; }
+    .readiness-details summary { color: var(--muted); cursor: pointer; }
+    .readiness-details ul { list-style: none; margin-top: .6rem; }
+    .readiness-details li { padding: .25rem 0; }
+    .readiness-details .done, .readiness-details .pending { font: .6rem 'Share Tech Mono',monospace; text-transform: uppercase; margin-right: .3rem; }
+    .done { color: var(--green); } .pending { color: var(--amber); }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 1.4rem; padding-top: 1.3rem; border-top: 1px solid var(--border); font-size: .8rem; color: var(--muted); }
+    .footer-bottom a { text-decoration: none; } .footer-bottom a:hover { color: var(--cyan); }
+    a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--cyan); outline-offset: 5px; }
+    .terminal-line { overflow-wrap: anywhere; }
+    @media (max-width: 700px) { .workflow-grid { grid-template-columns: 1fr; } .eyebrow { font-size: .65rem; } .wrapper { padding: 0 1.25rem; } .progress-label { letter-spacing: .06em; } .footer-copy { line-height: 1.8; } }
   </style>
 </head>
 <body>
@@ -787,14 +813,14 @@
       <a class="nav-link" href="#features">Features</a>
       <a class="nav-link" href="#how">Pipeline</a>
       <a class="nav-link" href="#waitlist">Notify me</a>
-      <span class="nav-status">COMING SOON</span>
+      <span class="nav-status">PRIVATE ALPHA</span>
     </div>
   </nav>
 
   <!-- HERO -->
   <section id="hero">
     <div class="wrapper">
-      <p class="eyebrow">// Open source · Self-hosted · MCP-native</p>
+      <p class="eyebrow">Built for coding and code review agents · Self-hosted · MCP-native</p>
 
       <h1 class="hero-title">
         <span class="accent">ALLIGATOR</span>
@@ -802,11 +828,14 @@
       </h1>
 
       <p class="hero-sub">
-        Give coding agents <strong>what</strong>, <strong>where</strong>, and
-        <strong>why</strong> — not just more tokens.
-        Hybrid search, dependency graphs, and commit intelligence over your repos,
-        served to Cursor, Claude Desktop, and friends via MCP.
+        Give your agents the <strong>what</strong>, <strong>where</strong>, and <strong>why</strong> of your codebase.
+        Search code, explore dependencies, and understand the changes behind it.
+        Persistent repository context for <strong>Codex and other clients through MCP.</strong>
       </p>
+      <a class="codex-credit" href="https://openai.com/codex/" target="_blank" rel="noopener noreferrer">
+        <img src="assets/openai-codex-product-mark.webp" width="26" height="26" alt="OpenAI" /><span class="codex-brand" aria-hidden="true">Codex</span>
+        <span>Built and evolved alongside Codex.</span><span aria-hidden="true">↗</span>
+      </a>
 
       <div class="hero-chips">
         <div class="chip"><span>Hybrid Search</span></div>
@@ -818,9 +847,9 @@
       </div>
 
       <div class="cta-row">
-        <a href="#waitlist" class="btn btn-primary">Get launch access</a>
+        <a href="#waitlist" class="btn btn-primary">Get CLI launch updates</a>
         <a href="#how" class="btn btn-ghost">How it works</a>
-        <span class="btn-label">// Source opens at public launch · Apache-2.0</span>
+        <span class="btn-label">// CLI coming to PyPI · Apache-2.0 licensed</span>
       </div>
 
       <div class="stats">
@@ -829,8 +858,8 @@
           <div class="stat-label">Not just where</div>
         </div>
         <div class="stat">
-          <div class="stat-val">9<span class="unit"> tools</span></div>
-          <div class="stat-label">MCP surface</div>
+          <div class="stat-val"><span class="stat-number">11</span><span class="unit"> tools</span></div>
+          <div class="stat-label">Core MCP tools</div>
         </div>
         <div class="stat">
           <div class="stat-val">Hybrid</div>
@@ -852,7 +881,7 @@
       <p class="section-tag reveal">// Core Capabilities</p>
       <h2 class="section-title reveal">Context agents can actually use.</h2>
       <p class="section-lead reveal">
-        Built for large, real codebases — not toy demos. Index once, query from any MCP client.
+        From the first investigation to the next code review. Bring code, relationships, and history into the same conversation.
       </p>
 
       <div class="features-grid reveal">
@@ -872,7 +901,7 @@
           <div class="feature-title">Dependency Impact</div>
           <p class="feature-desc">
             Graph traversal over callers, callees, and imports. Ask what breaks if you
-            change a function — get a structured answer, not a guess.
+            change a function. Get a structured answer with source locations and relationship evidence.
           </p>
           <div class="feature-corner"></div>
         </div>
@@ -889,10 +918,9 @@
 
         <div class="feature">
           <span class="feature-icon">⟁</span>
-          <div class="feature-title">Incremental Indexing</div>
+          <div class="feature-title">Smart Incremental Indexing</div>
           <p class="feature-desc">
-            Merkle-tree change detection and real-time file watching. Re-index what moved,
-            not the whole monorepo, every time.
+            Detect changed files, update affected code, and reuse compatible parsing and embeddings. Keep context current with real-time file watching and Git URL synchronization.
           </p>
           <div class="feature-corner"></div>
         </div>
@@ -901,8 +929,7 @@
           <span class="feature-icon">⌾</span>
           <div class="feature-title">MCP for Agents</div>
           <p class="feature-desc">
-            Native tools for Cursor, Claude Desktop, Windsurf, and any MCP host:
-            search, investigate, list entities, pull source, inspect index health.
+            11 core read-only tools for Codex and other clients through MCP. Search, investigate, retrieve source, and inspect index health.
           </p>
           <div class="feature-corner"></div>
         </div>
@@ -917,6 +944,9 @@
           <div class="feature-corner"></div>
         </div>
 
+<div class="feature"><span class="feature-icon">⌗</span><div class="feature-title">Workspace Context</div><p class="feature-desc">Search related repositories together. Follow supported cross-repository dependencies while retaining the repository, file, and source location of each result.</p><div class="feature-corner"></div></div>
+<div class="feature"><span class="feature-icon">↗</span><div class="feature-title">Explore the Graph</div><p class="feature-desc">Trace directed paths, inspect impact, and discover related file groups. Export a graph or explore it in an interactive HTML view.</p><div class="feature-corner"></div></div>
+<div class="feature"><span class="feature-icon">↻</span><div class="feature-title">Resumable Indexing</div><p class="feature-desc">Save progress as batches finish. Recover compatible work after an interruption and activate a completed generation for retrieval.</p><div class="feature-corner"></div></div>
       </div>
     </div>
   </section>
@@ -935,7 +965,7 @@
           <div class="step-num">01</div>
           <div class="step-body">
             <div class="step-title">Index</div>
-            <p class="step-desc">Point Alligator at a repository. Tree-sitter parsing, hybrid vectors, and raw commit history land in your local stack. Multi-repo and workspace scoping included.</p>
+            <p class="step-desc">Point Alligator at a local checkout or Git URL. Language-aware extraction builds searchable code and relationships in your own stack, with workspace support for related repositories.</p>
             <span class="step-tag">TREE-SITTER · QDRANT · ARANGO</span>
           </div>
         </div>
@@ -953,7 +983,7 @@
           <div class="step-num">03</div>
           <div class="step-body">
             <div class="step-title">Serve</div>
-            <p class="step-desc">Run the MCP server over stdio or HTTP. Wire it into Cursor or Claude Desktop in a few lines of config. Agents call tools with repo or workspace scope.</p>
+            <p class="step-desc">Run the MCP server over stdio or HTTP. Connect Codex and other clients in a few lines of configuration. Agents retrieve context from your published repository or workspace indexes.</p>
             <span class="step-tag">FASTMCP · STDIO / HTTP</span>
           </div>
         </div>
@@ -962,7 +992,7 @@
           <div class="step-num">04</div>
           <div class="step-body">
             <div class="step-title">Investigate</div>
-            <p class="step-desc">Agents search, walk dependencies, and pull commit context in one flow. Better answers. Fewer hallucinated “I think this file…” moments.</p>
+            <p class="step-desc">Find an implementation, trace its dependencies, and inspect the changes behind it. Give coding and code review agents source-backed context in one flow.</p>
             <span class="step-tag">SEARCH · GRAPH · HISTORY</span>
           </div>
         </div>
@@ -973,13 +1003,28 @@
 
   <hr class="divider" />
 
+  <section id="workflows">
+    <div class="wrapper">
+      <p class="section-tag reveal">// Code with context. Review with perspective.</p>
+      <h2 class="section-title reveal">Better questions. Grounded answers.</h2>
+      <p class="section-lead reveal">Ask Codex and other clients to use Alligator. Follow an answer back to its source.</p>
+      <div class="workflow-grid reveal">
+        <article><span class="workflow-label">Find</span><h3>“Where is retry backoff implemented?”</h3><p>Search by behavior or identifier, then retrieve the implementation with file and line attribution.</p></article>
+        <article><span class="workflow-label">Review</span><h3>“What depends on this function?”</h3><p>Explore callers and dependency paths to give your code review the surrounding context.</p></article>
+        <article><span class="workflow-label">Understand</span><h3>“Why did this behavior change?”</h3><p>Bring source history and optional commit summaries into the same investigation.</p></article>
+      </div>
+      <p class="data-note reveal">Your index runs on your infrastructure. Local models run locally; API-backed embeddings and summaries send selected content to your chosen provider.</p>
+    </div>
+  </section>
+  <hr class="divider" />
+
   <!-- WAITLIST -->
   <section id="waitlist">
     <div class="wrapper">
       <p class="section-tag reveal">// Early access</p>
-      <h2 class="section-title reveal">Be first when Alligator goes public.</h2>
+      <h2 class="section-title reveal">Be first to use the Alligator CLI.</h2>
       <p class="section-lead reveal">
-        Open source under Apache 2.0. Join the list for launch notes, install guides, and early builds.
+        Apache-2.0 licensed. Public CLI release coming to PyPI. Join the list for launch notes, installation guides, and release updates.
       </p>
 
       <div class="waitlist-box reveal">
@@ -987,17 +1032,16 @@
           <div class="waitlist-copy">
             <h3>What you get at launch</h3>
             <p>
-              A self-hosted code context engine you can run beside your AI IDE —
-              not another SaaS that needs your monorepo in the cloud.
+              A persistent context engine for Codex and other clients, running on infrastructure you control. Choose local or API-backed models to fit your workflow.
             </p>
             <ul class="waitlist-list">
-              <li>Public GitHub release + install path</li>
-              <li>MCP setup for Cursor &amp; Claude Desktop</li>
+              <li>CLI distribution through PyPI</li>
+              <li>MCP setup for Codex and other clients</li>
               <li>Architecture notes &amp; indexing guide</li>
-              <li>Changelog as we ship in the open</li>
+              <li>Release notes and upgrade guidance</li>
             </ul>
             <p class="form-note" style="margin-top:1.25rem">
-              // Repo is private until launch — email is the way in for now
+              // Public CLI distribution. The source repository remains private.
             </p>
           </div>
 
@@ -1033,45 +1077,53 @@
   <section id="status">
     <div class="wrapper">
       <p class="section-tag reveal">// Build status</p>
-      <h2 class="section-title reveal">Hardening for open source launch.</h2>
+      <h2 class="section-title reveal">Preparing the public CLI release.</h2>
 
       <div class="status-box reveal">
         <div class="terminal-line"><span class="prompt">$ </span>alligator --help</div>
-        <div class="terminal-line">code context engine for AI coding agents</div>
+        <div class="terminal-line">context for coding and code review agents</div>
         <div class="terminal-line"><span class="prompt">$ </span>alligator index ./my-monorepo --name platform</div>
         <div class="terminal-line">indexing… hybrid vectors · graph edges · commits</div>
-        <div class="terminal-line"><span class="prompt">$ </span>alligator serve</div>
-        <div class="terminal-line">MCP server ready <span class="dim">// stdio</span></div>
+        <div class="terminal-line"><span class="prompt">$ </span>codex mcp add alligator -- alligator serve</div>
+        <div class="terminal-line">Codex connection registered <span class="dim">// stdio</span></div>
         <div class="terminal-line">tools: search_code · find_dependencies · investigate_code · …</div>
-        <div class="terminal-line">status: coming soon <span class="terminal-cursor"></span></div>
+        <div class="terminal-line">status: private alpha <span class="terminal-cursor"></span></div>
       </div>
 
+      <p class="section-lead reveal readiness-note">Private alpha. These bars track the named launch checks below, not a percentage of all possible features. Updated 18 September 2026.</p>
       <div class="progress-grid reveal">
         <div class="progress-item">
-          <div class="progress-label"><span>Indexing + parsers</span><span class="pct">90%</span></div>
-          <div class="progress-bar"><div class="progress-fill" style="width:90%"></div></div>
+          <div class="progress-label"><span>Indexing + recovery</span><span class="pct">75%</span></div>
+          <div class="progress-bar" role="progressbar" aria-label="Indexing + recovery: launch checks completed" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75"><div class="progress-fill" style="width:75%"></div></div>
+          <details class="readiness-details"><summary>3 of 4 checks complete</summary><ul><li><span class="done">Complete</span> Language-aware extraction</li><li><span class="done">Complete</span> Incremental processing</li><li><span class="done">Complete</span> Checkpoint recovery validation</li><li><span class="pending">Pending</span> Large-repository acceptance</li></ul></details>
         </div>
         <div class="progress-item">
-          <div class="progress-label"><span>Hybrid search + graph</span><span class="pct">88%</span></div>
-          <div class="progress-bar"><div class="progress-fill" style="width:88%"></div></div>
+          <div class="progress-label"><span>Search + graph</span><span class="pct">75%</span></div>
+          <div class="progress-bar" role="progressbar" aria-label="Search + graph: launch checks completed" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75"><div class="progress-fill" style="width:75%"></div></div>
+          <details class="readiness-details"><summary>3 of 4 checks complete</summary><ul><li><span class="done">Complete</span> Hybrid retrieval</li><li><span class="done">Complete</span> Graph and relationship workflows</li><li><span class="done">Complete</span> Live backend regression checks</li><li><span class="pending">Pending</span> Large-repository retrieval verification</li></ul></details>
         </div>
         <div class="progress-item">
-          <div class="progress-label"><span>MCP tool surface</span><span class="pct">85%</span></div>
-          <div class="progress-bar"><div class="progress-fill" style="width:85%"></div></div>
+          <div class="progress-label"><span>MCP tool surface</span><span class="pct">100%</span></div>
+          <div class="progress-bar" role="progressbar" aria-label="MCP tool surface: launch checks completed" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><div class="progress-fill" style="width:100%"></div></div>
+          <details class="readiness-details"><summary>4 of 4 checks complete</summary><ul><li><span class="done">Complete</span> 11 core read-only tool definitions</li><li><span class="done">Complete</span> Repository and workspace scopes</li><li><span class="done">Complete</span> Graph CLI and MCP parity tests</li><li><span class="done">Complete</span> Client connection guides</li></ul></details>
         </div>
         <div class="progress-item">
-          <div class="progress-label"><span>CLI + ops tooling</span><span class="pct">80%</span></div>
-          <div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div>
+          <div class="progress-label"><span>CLI + operations</span><span class="pct">75%</span></div>
+          <div class="progress-bar" role="progressbar" aria-label="CLI + operations: launch checks completed" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75"><div class="progress-fill" style="width:75%"></div></div>
+          <details class="readiness-details"><summary>3 of 4 checks complete</summary><ul><li><span class="done">Complete</span> Managed backend setup</li><li><span class="done">Complete</span> Configuration and integrity diagnostics</li><li><span class="done">Complete</span> Durable job status</li><li><span class="pending">Pending</span> Long-running deployment acceptance</li></ul></details>
         </div>
         <div class="progress-item">
-          <div class="progress-label"><span>Docs + install UX</span><span class="pct">55%</span></div>
-          <div class="progress-bar"><div class="progress-fill" style="width:55%"></div></div>
+          <div class="progress-label"><span>Docs + installation</span><span class="pct">75%</span></div>
+          <div class="progress-bar" role="progressbar" aria-label="Docs + installation: launch checks completed" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75"><div class="progress-fill" style="width:75%"></div></div>
+          <details class="readiness-details"><summary>3 of 4 checks complete</summary><ul><li><span class="done">Complete</span> Installation guide</li><li><span class="done">Complete</span> First-index tutorial</li><li><span class="done">Complete</span> Codex connection guide</li><li><span class="pending">Pending</span> Public PyPI installation verification</li></ul></details>
         </div>
         <div class="progress-item">
-          <div class="progress-label"><span>Public launch polish</span><span class="pct">40%</span></div>
-          <div class="progress-bar"><div class="progress-fill" style="width:40%"></div></div>
+          <div class="progress-label"><span>Public launch</span><span class="pct">0%</span></div>
+          <div class="progress-bar" role="progressbar" aria-label="Public launch: launch checks completed" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-fill" style="width:0%"></div></div>
+          <details class="readiness-details"><summary>0 of 2 checks complete</summary><ul><li><span class="pending">Pending</span> Public CLI package published</li><li><span class="pending">Pending</span> Public installation journey verified</li></ul></details>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -1085,7 +1137,11 @@
           <a href="#features">Features</a>
           <a href="https://alligator.sh">alligator.sh</a>
         </div>
-        <span class="footer-copy">// Apache-2.0 // Source at launch</span>
+        <span class="footer-copy">// Apache-2.0 licensed · Private source repository</span>
+      </div>
+      <div class="footer-bottom">
+        <span>Created by Ompragash <span aria-hidden="true">·</span> <a href="https://linkedin.com/in/Ompragash" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a> <span aria-hidden="true">·</span> <a href="https://x.com/ompragash_v" target="_blank" rel="noopener noreferrer">X ↗</a></span>
+        <span>Codex and the OpenAI mark belong to OpenAI. Alligator is an independent project.</span>
       </div>
     </div>
   </footer>
@@ -1192,7 +1248,7 @@
 
       if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         msg.className = 'form-msg err';
-        msg.textContent = '// invalid email — try again';
+        msg.textContent = '// Enter a valid email address.';
         return;
       }
 
@@ -1228,7 +1284,7 @@
         form.reset();
       } catch (_) {
         msg.className = 'form-msg err';
-        msg.textContent = '// saved locally — email service unreachable. try again later.';
+        msg.textContent = '// Saved on this device only. Email service unavailable. Please try again later.';
       }
     });
   </script>
