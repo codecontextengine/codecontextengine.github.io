@@ -1,1 +1,6 @@
 .vercel
+.claude/
+.impeccable/live/
+.impeccable/review/
+.impeccable/decision/
+.impeccable/mocks/
