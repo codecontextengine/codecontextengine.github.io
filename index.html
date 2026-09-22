@@ -16,7 +16,7 @@
   <meta property="og:site_name" content="Alligator" />
 
   <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Alligator | Context for Coding and Code Review Agents" />
   <meta name="twitter:description" content="Persistent context for coding and code review agents. Hybrid search, graphs, and Git history through MCP. Self-hosted CLI coming to PyPI." />
 
@@ -33,14 +33,14 @@
       --green:    #39ff14;
       --amber:    #ffb300;
       --text:     #b0ccd8;
-      --muted:    #3d6070;
+      --muted:    #7897a7;
       --glow-c:   0 0 12px #00e5ff88;
       --glow-g:   0 0 12px #39ff1488;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 
     body {
       background: var(--bg);
@@ -150,19 +150,20 @@
     }
     .nav-link {
       font-family: 'Share Tech Mono', monospace;
-      font-size: .7rem;
-      letter-spacing: .12em;
+      font-size: .8125rem;
+      letter-spacing: .1em;
       color: var(--muted);
       text-decoration: none;
       text-transform: uppercase;
       transition: color .2s;
+      padding: .85rem 0;
     }
     .nav-link:hover { color: var(--cyan); }
     .nav-status {
       font-family: 'Share Tech Mono', monospace;
-      font-size: .7rem;
+      font-size: .75rem;
       color: var(--amber);
-      letter-spacing: .15em;
+      letter-spacing: .12em;
     }
     .nav-status::before {
       content: '';
@@ -187,8 +188,10 @@
 
     .eyebrow {
       font-family: 'Share Tech Mono', monospace;
-      font-size: .72rem;
-      letter-spacing: .35em;
+      font-size: .78rem;
+      letter-spacing: .13em;
+      line-height: 1.9;
+      max-width: 850px;
       color: var(--cyan);
       text-transform: uppercase;
       margin-bottom: 1.6rem;
@@ -243,27 +246,13 @@
     }
     .chip {
       font-family: 'Share Tech Mono', monospace;
-      font-size: .7rem;
-      letter-spacing: .12em;
-      padding: .35rem .9rem;
+      font-size: .78rem;
+      letter-spacing: .1em;
+      padding: .4rem .9rem;
       border: 1px solid var(--border);
-      color: var(--muted);
+      color: var(--text);
       text-transform: uppercase;
-      position: relative;
-      overflow: hidden;
-      transition: color .25s, border-color .25s;
     }
-    .chip::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--cyan);
-      opacity: 0;
-      transition: opacity .25s;
-    }
-    .chip:hover { color: var(--bg); border-color: var(--cyan); }
-    .chip:hover::before { opacity: 1; }
-    .chip span { position: relative; }
 
     .cta-row {
       display: flex;
@@ -276,10 +265,11 @@
     }
     .btn {
       font-family: 'Orbitron', sans-serif;
-      font-size: .7rem;
-      letter-spacing: .2em;
+      font-size: .8125rem;
+      letter-spacing: .16em;
       text-decoration: none;
-      padding: .85rem 2rem;
+      padding: .95rem 2rem;
+      min-height: 2.75rem;
       text-transform: uppercase;
       position: relative;
       overflow: hidden;
@@ -298,6 +288,7 @@
       color: var(--bg);
       font-weight: 700;
     }
+    .btn-primary[disabled] { opacity: .7; cursor: progress; }
     .btn-primary:hover {
       background: #fff;
       box-shadow: 0 0 30px #00e5ff66;
@@ -313,7 +304,7 @@
     }
     .btn-label {
       font-family: 'Share Tech Mono', monospace;
-      font-size: .7rem;
+      font-size: .8rem;
       color: var(--muted);
       letter-spacing: .1em;
     }
@@ -352,12 +343,12 @@
       font-weight: 900;
       color: #fff;
     }
-    .stat-number { font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-variant-numeric: lining-nums tabular-nums; letter-spacing: .02em; }
+    .stat-number { font-variant-numeric: lining-nums tabular-nums; }
     .stat-val .unit { font-size: .9rem; color: var(--cyan); }
     .stat-label {
       font-family: 'Share Tech Mono', monospace;
-      font-size: .65rem;
-      letter-spacing: .18em;
+      font-size: .75rem;
+      letter-spacing: .12em;
       color: var(--muted);
       text-transform: uppercase;
       margin-top: .25rem;
@@ -367,8 +358,8 @@
     section { padding: 6rem 0; }
     .section-tag {
       font-family: 'Share Tech Mono', monospace;
-      font-size: .68rem;
-      letter-spacing: .3em;
+      font-size: .75rem;
+      letter-spacing: .2em;
       color: var(--cyan);
       text-transform: uppercase;
       margin-bottom: 1rem;
@@ -491,11 +482,11 @@
     .step-tag {
       display: inline-block;
       font-family: 'Share Tech Mono', monospace;
-      font-size: .6rem;
-      letter-spacing: .15em;
+      font-size: .75rem;
+      letter-spacing: .1em;
       color: var(--cyan);
       border: 1px solid var(--cyan);
-      padding: .15rem .55rem;
+      padding: .2rem .6rem;
       margin-top: .75rem;
       opacity: .7;
     }
@@ -550,10 +541,10 @@
     }
     .waitlist-list li {
       font-family: 'Share Tech Mono', monospace;
-      font-size: .72rem;
-      letter-spacing: .06em;
-      color: var(--muted);
-      padding: .4rem 0;
+      font-size: .85rem;
+      letter-spacing: .03em;
+      color: var(--text);
+      padding: .5rem 0;
       border-bottom: 1px solid var(--border);
     }
     .waitlist-list li::before {
@@ -565,8 +556,8 @@
     .waitlist-form label {
       display: block;
       font-family: 'Share Tech Mono', monospace;
-      font-size: .65rem;
-      letter-spacing: .18em;
+      font-size: .75rem;
+      letter-spacing: .12em;
       color: var(--muted);
       text-transform: uppercase;
       margin-bottom: .5rem;
@@ -598,14 +589,15 @@
     .form-note {
       margin-top: .85rem;
       font-family: 'Share Tech Mono', monospace;
-      font-size: .65rem;
-      letter-spacing: .08em;
+      font-size: .78rem;
+      letter-spacing: .04em;
+      line-height: 1.6;
       color: var(--muted);
     }
     .form-msg {
       margin-top: 1rem;
       font-family: 'Share Tech Mono', monospace;
-      font-size: .75rem;
+      font-size: .85rem;
       letter-spacing: .06em;
       min-height: 1.2em;
     }
@@ -641,7 +633,7 @@
 
     .terminal-line {
       font-family: 'Share Tech Mono', monospace;
-      font-size: .8rem;
+      font-size: .85rem;
       color: var(--green);
       margin-bottom: .4rem;
       letter-spacing: .05em;
@@ -666,8 +658,8 @@
       display: flex;
       justify-content: space-between;
       font-family: 'Share Tech Mono', monospace;
-      font-size: .68rem;
-      letter-spacing: .12em;
+      font-size: .75rem;
+      letter-spacing: .08em;
       color: var(--text);
       text-transform: uppercase;
       margin-bottom: .5rem;
@@ -709,13 +701,13 @@
     }
     .footer-logo {
       font-family: 'Orbitron', sans-serif;
-      font-size: .65rem;
+      font-size: .75rem;
       letter-spacing: .25em;
       color: var(--muted);
     }
     .footer-copy {
       font-family: 'Share Tech Mono', monospace;
-      font-size: .65rem;
+      font-size: .78rem;
       color: var(--muted);
       letter-spacing: .1em;
     }
@@ -725,8 +717,10 @@
     }
     .footer-links a {
       font-family: 'Share Tech Mono', monospace;
-      font-size: .65rem;
-      letter-spacing: .1em;
+      font-size: .78rem;
+      letter-spacing: .08em;
+      display: inline-block;
+      padding: .6rem 0;
       color: var(--muted);
       text-decoration: none;
       text-transform: uppercase;
@@ -752,8 +746,11 @@
 
     @media (max-width: 640px) {
       nav { padding: 1rem 1.25rem; }
-      .nav-link { display: none; }
+      .nav-link:not(.nav-link--cta) { display: none; }
+      .nav-status { display: none; }
       .stats { grid-template-columns: 1fr 1fr; }
+      .stat { padding: 1.3rem 1.2rem; }
+      .stat-val { font-size: clamp(1.15rem, 5.2vw, 1.8rem); }
       .stat { border-right: 1px solid var(--border); }
       .stat:nth-child(even) { border-right: none; }
       .cta-row { flex-direction: column; align-items: flex-start; }
@@ -775,29 +772,27 @@
     }
 
     /* Launch refresh: preserve the original identity with clearer attribution. */
-    :root { --muted: #7897a7; }
-    .eyebrow { letter-spacing: .13em; max-width: 850px; line-height: 1.9; }
     .codex-credit { display: inline-flex; flex-wrap: wrap; gap: .7rem; align-items: center; margin-top: 1.5rem; color: #b8cbd5; font-size: .9rem; text-decoration: none; }
     .codex-credit:hover { color: #fff; }
     .codex-brand { color: #fff; font: 600 1.05rem 'Rajdhani',sans-serif; padding-right: .8rem; border-right: 1px solid #365160; }
     .codex-credit img { width: 26px; height: 26px; object-fit: contain; }
     .workflow-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-top: 2.5rem; }
     .workflow-grid article { background: var(--surface); padding: 1.8rem; border: 1px solid var(--border); }
-    .workflow-label { font: .7rem 'Share Tech Mono',monospace; letter-spacing: .15em; text-transform: uppercase; color: var(--cyan); }
+    .workflow-label { font: .78rem 'Share Tech Mono',monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--cyan); }
     .workflow-grid h3 { color: #fff; font-size: 1.25rem; line-height: 1.4; margin: 1rem 0; }
     .data-note { max-width: 850px; margin-top: 2rem; color: var(--muted); font-size: .95rem; }
     .readiness-note { margin-top: 2rem; }
     .readiness-details { font-size: .9rem; margin-top: .65rem; }
-    .readiness-details summary { color: var(--muted); cursor: pointer; }
+    .readiness-details summary { color: var(--muted); cursor: pointer; padding: .6rem 0; }
     .readiness-details ul { list-style: none; margin-top: .6rem; }
     .readiness-details li { padding: .25rem 0; }
-    .readiness-details .done, .readiness-details .pending { font: .6rem 'Share Tech Mono',monospace; text-transform: uppercase; margin-right: .3rem; }
+    .readiness-details .done, .readiness-details .pending { font: .75rem 'Share Tech Mono',monospace; text-transform: uppercase; margin-right: .3rem; }
     .done { color: var(--green); } .pending { color: var(--amber); }
     .footer-bottom { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 1.4rem; padding-top: 1.3rem; border-top: 1px solid var(--border); font-size: .8rem; color: var(--muted); }
-    .footer-bottom a { text-decoration: none; } .footer-bottom a:hover { color: var(--cyan); }
+    .footer-bottom a { text-decoration: none; display: inline-block; padding: .6rem 0; } .footer-bottom a:hover { color: var(--cyan); }
     a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--cyan); outline-offset: 5px; }
     .terminal-line { overflow-wrap: anywhere; }
-    @media (max-width: 700px) { .workflow-grid { grid-template-columns: 1fr; } .eyebrow { font-size: .65rem; } .wrapper { padding: 0 1.25rem; } .progress-label { letter-spacing: .06em; } .footer-copy { line-height: 1.8; } }
+    @media (max-width: 700px) { .workflow-grid { grid-template-columns: 1fr; } .eyebrow { font-size: .75rem; } .wrapper { padding: 0 1.25rem; } .progress-label { letter-spacing: .06em; } .footer-copy { line-height: 1.8; } }
   </style>
 </head>
 <body>
@@ -812,7 +807,7 @@
     <div class="nav-right">
       <a class="nav-link" href="#features">Features</a>
       <a class="nav-link" href="#how">Pipeline</a>
-      <a class="nav-link" href="#waitlist">Notify me</a>
+      <a class="nav-link nav-link--cta" href="#waitlist">Notify me</a>
       <span class="nav-status">PRIVATE ALPHA</span>
     </div>
   </nav>
@@ -833,7 +828,7 @@
         Persistent repository context for <strong>Codex and other clients through MCP.</strong>
       </p>
       <a class="codex-credit" href="https://openai.com/codex/" target="_blank" rel="noopener noreferrer">
-        <img src="assets/openai-codex-product-mark.webp" width="26" height="26" alt="OpenAI" /><span class="codex-brand" aria-hidden="true">Codex</span>
+        <img src="assets/openai-codex-product-mark.webp" width="26" height="26" alt="" /><span class="codex-brand">Codex</span>
         <span>Built and evolved alongside Codex.</span><span aria-hidden="true">↗</span>
       </a>
 
@@ -847,7 +842,7 @@
       </div>
 
       <div class="cta-row">
-        <a href="#waitlist" class="btn btn-primary">Get CLI launch updates</a>
+        <a href="#waitlist" class="btn btn-primary">Notify me at launch</a>
         <a href="#how" class="btn btn-ghost">How it works</a>
         <span class="btn-label">// CLI coming to PyPI · Apache-2.0 licensed</span>
       </div>
@@ -944,9 +939,30 @@
           <div class="feature-corner"></div>
         </div>
 
-<div class="feature"><span class="feature-icon">⌗</span><div class="feature-title">Workspace Context</div><p class="feature-desc">Search related repositories together. Follow supported cross-repository dependencies while retaining the repository, file, and source location of each result.</p><div class="feature-corner"></div></div>
-<div class="feature"><span class="feature-icon">↗</span><div class="feature-title">Explore the Graph</div><p class="feature-desc">Trace directed paths, inspect impact, and discover related file groups. Export a graph or explore it in an interactive HTML view.</p><div class="feature-corner"></div></div>
-<div class="feature"><span class="feature-icon">↻</span><div class="feature-title">Resumable Indexing</div><p class="feature-desc">Save progress as batches finish. Recover compatible work after an interruption and activate a completed generation for retrieval.</p><div class="feature-corner"></div></div>
+        <div class="feature">
+          <span class="feature-icon">⌗</span>
+          <div class="feature-title">Workspace Context</div>
+          <p class="feature-desc">
+            Search related repositories together. Follow supported cross-repository dependencies while retaining the repository, file, and source location of each result.
+          </p>
+          <div class="feature-corner"></div>
+        </div>
+        <div class="feature">
+          <span class="feature-icon">↗</span>
+          <div class="feature-title">Explore the Graph</div>
+          <p class="feature-desc">
+            Trace directed paths, inspect impact, and discover related file groups. Export a graph or explore it in an interactive HTML view.
+          </p>
+          <div class="feature-corner"></div>
+        </div>
+        <div class="feature">
+          <span class="feature-icon">↻</span>
+          <div class="feature-title">Resumable Indexing</div>
+          <p class="feature-desc">
+            Save progress as batches finish. Recover compatible work after an interruption and activate a completed generation for retrieval.
+          </p>
+          <div class="feature-corner"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -1021,7 +1037,7 @@
   <!-- WAITLIST -->
   <section id="waitlist">
     <div class="wrapper">
-      <p class="section-tag reveal">// Early access</p>
+      <p class="section-tag reveal">// Launch list</p>
       <h2 class="section-title reveal">Be first to use the Alligator CLI.</h2>
       <p class="section-lead reveal">
         Apache-2.0 licensed. Public CLI release coming to PyPI. Join the list for launch notes, installation guides, and release updates.
@@ -1041,7 +1057,7 @@
               <li>Release notes and upgrade guidance</li>
             </ul>
             <p class="form-note" style="margin-top:1.25rem">
-              // Public CLI distribution. The source repository remains private.
+              // The CLI ships on PyPI under Apache-2.0. The source repository is private.
             </p>
           </div>
 
@@ -1133,11 +1149,11 @@
       <div class="footer-inner">
         <span class="footer-logo">ALLIGATOR // CODE CONTEXT ENGINE</span>
         <div class="footer-links">
-          <a href="#waitlist">Waitlist</a>
+          <a href="#waitlist">Notify me</a>
           <a href="#features">Features</a>
           <a href="https://alligator.sh">alligator.sh</a>
         </div>
-        <span class="footer-copy">// Apache-2.0 licensed · Private source repository</span>
+        <span class="footer-copy">// Private alpha · public CLI on PyPI at launch</span>
       </div>
       <div class="footer-bottom">
         <span>Created by Ompragash <span aria-hidden="true">·</span> <a href="https://linkedin.com/in/Ompragash" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a> <span aria-hidden="true">·</span> <a href="https://x.com/ompragash_v" target="_blank" rel="noopener noreferrer">X ↗</a></span>
@@ -1168,7 +1184,7 @@
     const canvas = document.getElementById('bg-canvas');
     const ctx = canvas.getContext('2d');
     let W, H, nodes = [];
-    const NODE_COUNT = 90;
+    const NODE_COUNT = window.innerWidth < 700 ? 45 : 90;
     const MAX_DIST = 160;
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -1220,9 +1236,10 @@
         ctx.fillStyle = 'rgba(0,229,255,.7)';
         ctx.fill();
       }
-      if (!reduceMotion) requestAnimationFrame(draw);
+      if (!reduceMotion && !document.hidden) requestAnimationFrame(draw);
     }
     draw();
+    document.addEventListener('visibilitychange', () => { if (!document.hidden && !reduceMotion) requestAnimationFrame(draw); });
 
     // ---- SCROLL REVEAL ----
     const io = new IntersectionObserver(entries => {
@@ -1252,22 +1269,10 @@
         return;
       }
 
-      // Local fallback list (always saved) so you never lose interest if Formspree isn't wired yet
-      try {
-        const key = 'alligator_waitlist';
-        const list = JSON.parse(localStorage.getItem(key) || '[]');
-        if (!list.includes(email)) {
-          list.push(email);
-          localStorage.setItem(key, JSON.stringify(list));
-        }
-      } catch (_) { /* ignore quota / private mode */ }
-
-      if (!WAITLIST_ENDPOINT) {
-        msg.className = 'form-msg ok';
-        msg.textContent = '// locked in. we\'ll notify you at launch.';
-        form.reset();
-        return;
-      }
+      const button = form.querySelector('button[type=submit]');
+      button.disabled = true;
+      const label = button.textContent;
+      button.textContent = 'Sending…';
 
       try {
         const res = await fetch(WAITLIST_ENDPOINT, {
@@ -1284,7 +1289,10 @@
         form.reset();
       } catch (_) {
         msg.className = 'form-msg err';
-        msg.textContent = '// Saved on this device only. Email service unavailable. Please try again later.';
+        msg.textContent = '// Could not reach the list service. Nothing was saved; please try again in a minute.';
+      } finally {
+        button.disabled = false;
+        button.textContent = label;
       }
     });
   </script>
